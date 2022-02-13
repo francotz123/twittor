@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 
+	middlew "github.com/francotz123/twittor/middlew"
+	routers "github.com/francotz123/twittor/routers"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
@@ -12,6 +14,7 @@ import (
 func Manejadores() {
 	router := mux.NewRouter()
 
+	router.HandleFunc("/registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
 	PORT := os.Getenv("PORT")
 
 	if PORT == "" {
@@ -19,6 +22,8 @@ func Manejadores() {
 	}
 
 	handler := cors.AllowAll().Handler(router)
-
-	log.Fatal(http.ListenAndServe(":"+PORT, handler))
+	err := http.ListenAndServe(":"+PORT, handler)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
 }

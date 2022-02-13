@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	if bd.ChequeConnection() == 0 {
+
+	if bd.ChequeoConnection() == 0 {
 		log.Fatal("Sin Conexion a la Base de Datos")
 		return
 	}

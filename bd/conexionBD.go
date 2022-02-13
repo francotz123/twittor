@@ -9,9 +9,9 @@ import (
 )
 
 var MongoCN = ConectarDB()
-var clientOptions = options.Client().ApplyURI("mongodb+srv://ftelliz:1540257070@cluster0.t6b0y.mongodb.net/twittor?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI("mongodb://ftelliz:1540257070@cluster0-shard-00-00.t6b0y.mongodb.net:27017,cluster0-shard-00-01.t6b0y.mongodb.net:27017,cluster0-shard-00-02.t6b0y.mongodb.net:27017/twittor?ssl=true&replicaSet=atlas-12rv9z-shard-0&authSource=admin&retryWrites=true&w=majority")
 
-/* ConectarDB Es la funcion que me permite conectar a la base de datos */
+/* ConectarDB Es la funcion que permite conectar a la base de datos */
 func ConectarDB() *mongo.Client {
 
 	client, err := mongo.Connect(context.TODO(), clientOptions)
@@ -22,7 +22,7 @@ func ConectarDB() *mongo.Client {
 
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 		return client
 	}
 
@@ -30,8 +30,8 @@ func ConectarDB() *mongo.Client {
 	return client
 }
 
-/* ChequeConnection Es la funcion que me permite corroborar la conexion con un ping */
-func ChequeConnection() int {
+/* ChequeConnection Es la funcion que permite corroborar la conexion con un ping */
+func ChequeoConnection() int {
 	err := MongoCN.Ping(context.TODO(), nil)
 	if err != nil {
 		return 0
