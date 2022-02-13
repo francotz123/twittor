@@ -2,6 +2,7 @@ package routers
 
 import (
 	"errors"
+	"os"
 	"strings"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -17,7 +18,7 @@ var IDUsuario string
 
 /* ProcesoToken procesa roken para extraer sus valores */
 func ProcesoToken(token string) (*models.Claim, bool, string, error) {
-	miClave := []byte("FrancoTellizTwittor41981")
+	miClave := []byte(os.Getenv("CLAVE_TOKEN"))
 	claims := &models.Claim{}
 
 	splitToken := strings.Split(token, "Bearer")
