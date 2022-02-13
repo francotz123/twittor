@@ -1,6 +1,7 @@
 package jwt
 
 import (
+	"os"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -10,7 +11,7 @@ import (
 /* GeneroJWT genera el encriptado con JWT */
 func GeneroJWT(userModel models.Usuario) (string, error) {
 
-	miClave := []byte("FrancoTellizTwittor41981")
+	miClave := []byte(os.Getenv("CLAVE_TOKEN"))
 
 	payload := jwt.MapClaims{
 		"email":            userModel.Email,
