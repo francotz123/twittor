@@ -28,6 +28,8 @@ func Manejadores() {
 	router.HandleFunc("/obtenerAvatar", middlew.ChequeoBD(routers.ObtenerAvatar)).Methods("POST")
 	router.HandleFunc("/obtenerBanner", middlew.ChequeoBD(routers.ObtenerBanner)).Methods("POST")
 
+	router.HandleFunc("/altaRelacion", middlew.ChequeoBD(middlew.ValidoJWT(routers.AltarRelacion))).Methods("POST")
+
 	PORT := os.Getenv("PORT")
 
 	if PORT == "" {
