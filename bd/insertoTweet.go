@@ -9,6 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+/*InsertoTweet permite guardar un tweet en la db */
 func InsertoTweet(modelTweet models.GraboTweet) (string, bool, error) {
 
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)

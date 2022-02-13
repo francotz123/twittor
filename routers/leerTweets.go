@@ -8,8 +8,8 @@ import (
 	bd "github.com/francotz123/twittor/bd"
 )
 
-/* LeoTweets devuelve los tweets*/
-func LeoTweets(w http.ResponseWriter, r *http.Request) {
+/* LeerTweets devuelve los tweets*/
+func LeerTweets(w http.ResponseWriter, r *http.Request) {
 	ID := r.URL.Query().Get("id")
 
 	if len(ID) < 1 {
