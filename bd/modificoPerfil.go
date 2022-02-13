@@ -52,7 +52,7 @@ func ModificoRegistro(userModel models.Usuario, ID string) (bool, error) {
 	objID, _ := primitive.ObjectIDFromHex(ID)
 	condicion := bson.M{"_id": bson.M{"$eq": objID}}
 
-	_, err := collection.UpdateOne(ctx, updtString, condicion)
+	_, err := collection.UpdateOne(ctx, condicion, updtString)
 
 	if err != nil {
 		log.Println("Error al acutalizar usuario" + err.Error())
