@@ -15,6 +15,8 @@ func Manejadores() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/healthy", routers.Healthy).Methods("GET")
+	router.HandleFunc("/", routers.Bienvenido).Methods("GET")
+
 	router.HandleFunc("/registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/login", middlew.ChequeoBD(routers.Login)).Methods("POST")
 
