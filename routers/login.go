@@ -19,7 +19,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&modelUser)
 
 	if err != nil {
-		http.Error(w, "Usuario y/o contraseña inválidos"+err.Error(), 400)
+		http.Error(w, "Error al recibir el email y contraseña "+err.Error(), 400)
 		return
 	}
 
