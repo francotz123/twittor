@@ -9,7 +9,7 @@ import (
 )
 
 var MongoCN = ConectarDB()
-var clientOptions = options.Client().ApplyURI("mongodb://ftelliz:1540257070@cluster0-shard-00-00.t6b0y.mongodb.net:27017,cluster0-shard-00-01.t6b0y.mongodb.net:27017,cluster0-shard-00-02.t6b0y.mongodb.net:27017/twittor?ssl=true&replicaSet=atlas-12rv9z-shard-0&authSource=admin&retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI("")
 
 /* ConectarDB Es la funcion que permite conectar a la base de datos */
 func ConectarDB() *mongo.Client {
